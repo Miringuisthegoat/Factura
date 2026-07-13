@@ -192,6 +192,15 @@ class PreferencesManager @Inject constructor(
         }
     }
 
+    /**
+     * Canonical accessor used by screens/ViewModels (e.g. to read [BusinessProfile.currencyCode]
+     * for [com.benjamin.factura.util.Formatters.formatCurrency]). This is just a descriptively
+     * named alias over [cachedBusinessProfile] - both point at the exact same underlying
+     * DataStore-backed Flow, so there is no duplicate mapping/parsing work and no risk of the
+     * two ever drifting out of sync.
+     */
+    val businessProfileFlow: Flow<BusinessProfile?> = cachedBusinessProfile
+
     suspend fun getCachedBusinessProfileOnce(): BusinessProfile? = cachedBusinessProfile.first()
 
     suspend fun setCachedBusinessProfile(profile: BusinessProfile) {

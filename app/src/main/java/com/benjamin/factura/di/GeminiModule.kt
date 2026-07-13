@@ -29,7 +29,7 @@ object GeminiModule {
     @Provides
     @Singleton
     fun provideGenerativeModel(): GenerativeModel = GenerativeModel(
-        modelName = "gemini-1.5-flash",
+        modelName = "gemini-2.5-flash-lite",
         apiKey = BuildConfig.GEMINI_API_KEY
     )
 }
